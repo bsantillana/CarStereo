@@ -86,7 +86,7 @@
             android:layout_gravity="center_horizontal"
             android:background="#fff0f1ff"
             android:textColor="#ff1611ff"
-            android:textSize="50sp" />
+            android:textSize="70dp" />
 
     </LinearLayout>
 
@@ -95,5 +95,100 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#ffb0b0b0"></LinearLayout>
+        android:background="#ffb0b0b0"
+        android:weightSum="1">
+
+        <SeekBar
+            android:layout_width="377dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/tuningBar"
+            android:indeterminate="false"
+            android:background="#ff9dd8ff"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:layout_width="225dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Volume: 10"
+            android:id="@+id/volumeDisplayView"
+            android:layout_gravity="right"
+            android:textSize="40dp"
+            android:textColor="#ff000000" />
+
+        <TextView
+            android:layout_width="207dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Radio Tuner"
+            android:id="@+id/tunerView"
+            android:textSize="30dp"
+            android:textColor="#ffffffff" />
+
+        <SeekBar
+            android:layout_width="234dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/volumeBar"
+            android:layout_gravity="right"
+            android:indeterminate="false"
+            android:background="#ffff97c5"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="_______________"
+            android:id="@+id/cd_deck"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#ff000000"
+            android:textSize="50dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:layout_marginLeft="250dp"
+            android:layout_marginRight="250dp"
+            android:layout_gravity="center_horizontal">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pause/Play"
+                android:id="@+id/pauseButton" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stop"
+                android:id="@+id/stopButton" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fast Forward"
+                android:id="@+id/forwardButton" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rewind"
+                android:id="@+id/rewindButton" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EJECT"
+                android:id="@+id/ejectButton" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 </LinearLayout>
