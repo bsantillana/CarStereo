@@ -9,7 +9,84 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#ff000000">
+        android:background="#ff000000"
+        android:weightSum="1">
+
+        <ToggleButton
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="\@string Power"
+            android:id="@+id/PowerButton"
+            android:layout_gravity="right"
+            android:checked="true"
+            android:layout_weight="0" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:layout_marginLeft="250dp"
+            android:layout_marginRight="250dp">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:id="@+id/preset1" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2"
+                android:id="@+id/preset2" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3"
+                android:id="@+id/preset3" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4"
+                android:id="@+id/preset4" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5"
+                android:id="@+id/preset5" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="6"
+                android:id="@+id/preset6" />
+
+        </LinearLayout>
+
+        <ToggleButton
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:textOff = "FM"
+            android:textOn = "AM"
+            android:id="@+id/AMFM_Button"
+            android:layout_gravity="right"
+            android:checked="false"
+            android:layout_weight="0" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="102.9 KBLX"
+            android:id="@+id/radio_station"
+            android:layout_gravity="center_horizontal"
+            android:background="#fff0f1ff"
+            android:textColor="#ff1611ff"
+            android:textSize="50sp" />
 
     </LinearLayout>
 
