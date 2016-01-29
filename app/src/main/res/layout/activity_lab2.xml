@@ -17,6 +17,7 @@
             android:layout_height="50dp"
             android:text="\@string Power"
             android:id="@+id/PowerButton"
+            android:onClick="Power"
             android:layout_gravity="right"
             android:checked="true"
             android:layout_weight="0" />
@@ -75,7 +76,9 @@
             android:id="@+id/AMFM_Button"
             android:layout_gravity="right"
             android:checked="false"
-            android:layout_weight="0" />
+            android:layout_weight="0"
+            android:background="#ffb300ff"
+            android:textColor="#fff8fff4" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -104,7 +107,9 @@
             android:id="@+id/tuningBar"
             android:indeterminate="false"
             android:background="#ff9dd8ff"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="20dp"
+            android:progress="530"
+            android:max="1700" />
 
         <TextView
             android:layout_width="225dp"
