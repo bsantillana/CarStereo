@@ -21,14 +21,11 @@ public class Lab2 extends Activity implements ToggleButton.OnCheckedChangeListen
     protected TextView volumeDisplayView;
     protected SeekBar tuningBar;
     protected SeekBar volumeBar;
-    protected SeekBar minAM = null;
-    protected TextView minAM_Val = null;
-    protected SeekBar maxAM = null;
-    protected TextView maxAM_Val = null;
-    protected SeekBar minFM = null;
-    protected TextView minFM_Val = null;
-    protected SeekBar maxFM = null;
-    protected TextView maxFM_Val = null;
+    protected boolean amFlag = false;
+    protected int seekBarProgress = 530;
+    protected int seekBarProgress1;
+    protected String[] AM = {"550 AM", "600 AM", "650 AM", "700 AM", "750 AM", "800 AM"};
+    protected String[] FM = {"90.9 FM","92.9 FM", "94.9 FM", "96.9 FM", "98.9 FM", "100.9 FM" };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,25 +43,7 @@ public class Lab2 extends Activity implements ToggleButton.OnCheckedChangeListen
         volumeDisplayView = (TextView)findViewById(R.id.volumeDisplayView);
 
         tuningBar = (SeekBar)findViewById(R.id.tuningBar);
-
-        minAM = (SeekBar)findViewById(R.id.tuningBar);
-        minAM. setOnSeekBarChangeListener(this);
-
-        maxAM = (SeekBar)findViewById(R.id.tuningBar);
-        maxAM. setOnSeekBarChangeListener(this);
-
-        minFM = (SeekBar)findViewById(R.id.tuningBar);
-        minFM. setOnSeekBarChangeListener(this);
-
-        maxFM = (SeekBar)findViewById(R.id.tuningBar);
-        maxFM. setOnSeekBarChangeListener(this);
-
-        minAM_Val = (TextView)findViewById(R.id.radio_station);
-        maxAM_Val =(TextView)findViewById(R.id.radio_station);
-
-        //minFM_Val = (TextView)findViewById(R.id.);
-        //maxFM_Val = (TextView)findViewById(R.id);
-
+        tuningBar.setOnSeekBarChangeListener(this);
 
         volumeBar = (SeekBar)findViewById(R.id.volumeBar);
     }
@@ -113,17 +92,16 @@ public class Lab2 extends Activity implements ToggleButton.OnCheckedChangeListen
             tuningBar.setEnabled(true);
             AMFM_Button.setEnabled(true);
         }
+
         if(AMFM_Button.isChecked()){
-            radio_station.setText("600 AM");
+            radio_station.setText(seekBarProgress + " AM");
         }
         else if(!(AMFM_Button.isChecked())) {
-            radio_station.setText("100.1 FM");
+            radio_station.setText((double)seekBarProgress1/10 + " FM");
         }
 
+
         }
-    public final synchronized void incrementProgressBy (int increment){
-        increment = 10;
-    }
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -131,19 +109,18 @@ public class Lab2 extends Activity implements ToggleButton.OnCheckedChangeListen
 
         if (AMFM_Button.isChecked()) {
             int step = 10;
-            progress = ((int) Math.round(progress / step)) * step;
+            int newProgress = ((int) Math.round(progress / step)) * step;
             seekBar.setMax(1170);
-            int seekBarProgress = (progress + 530);//530
-            seekBar.setProgress(progress);
+            seekBarProgress = (newProgress + 530);//530
             radio_station.setText(seekBarProgress + " AM");
+            amFlag = true;
         }
         else if (!(AMFM_Button.isChecked())) {
             int step = 2;
             progress = ((int) Math.round(progress / step)) * step;
             seekBar.setMax(198);
-            int seekBarProgress = (progress + 881);//530
-            seekBar.setProgress(progress);
-            radio_station.setText((((double) seekBarProgress)/10) + " FM");
+            seekBarProgress1 = (progress + 881);//530
+            radio_station.setText((((double) seekBarProgress1)/10) + " FM");
         }
     }
     @Override
