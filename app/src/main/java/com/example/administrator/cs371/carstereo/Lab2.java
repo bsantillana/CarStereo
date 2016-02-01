@@ -6,14 +6,17 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.ToggleButton;
-import android.widget.ProgressBar;
 
 
-public class Lab2 extends Activity implements ToggleButton.OnCheckedChangeListener, SeekBar.OnSeekBarChangeListener {
+
+public class Lab2 extends Activity implements ToggleButton.OnCheckedChangeListener, SeekBar.OnSeekBarChangeListener,
+        OnClickListener{
 
     protected ToggleButton PowerButton;
     protected ToggleButton AMFM_Button;
@@ -21,9 +24,15 @@ public class Lab2 extends Activity implements ToggleButton.OnCheckedChangeListen
     protected TextView volumeDisplayView;
     protected SeekBar tuningBar;
     protected SeekBar volumeBar;
-    protected boolean amFlag = false;
     protected int seekBarProgress = 530;
     protected int seekBarProgress1;
+
+    protected Button preset1;
+    protected Button preset2;
+    protected Button preset3;
+    protected Button preset4;
+    protected Button preset5;
+    protected Button preset6;
     protected String[] AM = {"550 AM", "600 AM", "650 AM", "700 AM", "750 AM", "800 AM"};
     protected String[] FM = {"90.9 FM","92.9 FM", "94.9 FM", "96.9 FM", "98.9 FM", "100.9 FM" };
 
@@ -46,6 +55,24 @@ public class Lab2 extends Activity implements ToggleButton.OnCheckedChangeListen
         tuningBar.setOnSeekBarChangeListener(this);
 
         volumeBar = (SeekBar)findViewById(R.id.volumeBar);
+
+        preset1 = (Button)findViewById(R.id.preset1);
+        preset1.setOnClickListener(this);
+
+        preset2 = (Button)findViewById(R.id.preset2);
+        preset2.setOnClickListener(this);
+
+        preset3 = (Button)findViewById(R.id.preset3);
+        preset3.setOnClickListener(this);
+
+        preset4 = (Button)findViewById(R.id.preset4);
+        preset4.setOnClickListener(this);
+
+        preset5 = (Button)findViewById(R.id.preset5);
+        preset5.setOnClickListener(this);
+
+        preset6 = (Button)findViewById(R.id.preset6);
+        preset6.setOnClickListener(this);
     }
 
     @Override
@@ -54,6 +81,40 @@ public class Lab2 extends Activity implements ToggleButton.OnCheckedChangeListen
         getMenuInflater().inflate(R.menu.menu_lab2, menu);
         return true;
     }
+
+        @Override
+        public void onClick(View view) {
+            if (AMFM_Button.isChecked())
+            {
+                if(view.getId() == R.id.preset1)
+                    radio_station .setText(AM[0]);
+                else if(view.getId() == R.id.preset2)
+                    radio_station .setText(AM[1]);
+                else if(view.getId() == R.id.preset3)
+                    radio_station .setText(AM[2]);
+                else if(view.getId() == R.id.preset4)
+                    radio_station .setText(AM[3]);
+                else if(view.getId() == R.id.preset5)
+                    radio_station .setText(AM[4]);
+                else if(view.getId() == R.id.preset6)
+                    radio_station .setText(AM[5]);
+            }
+            else if(!AMFM_Button.isChecked())
+            {
+                if(view.getId() == R.id.preset1)
+                    radio_station .setText(FM[0]);
+                else if(view.getId() == R.id.preset2)
+                    radio_station .setText(FM[1]);
+                else if(view.getId() == R.id.preset3)
+                    radio_station .setText(FM[2]);
+                else if(view.getId() == R.id.preset4)
+                    radio_station .setText(FM[3]);
+                else if(view.getId() == R.id.preset5)
+                    radio_station .setText(FM[4]);
+                else if(view.getId() == R.id.preset6)
+                    radio_station .setText(FM[5]);
+            }
+        }
 
     public void Power(View view){
 
@@ -113,7 +174,6 @@ public class Lab2 extends Activity implements ToggleButton.OnCheckedChangeListen
             seekBar.setMax(1170);
             seekBarProgress = (newProgress + 530);//530
             radio_station.setText(seekBarProgress + " AM");
-            amFlag = true;
         }
         else if (!(AMFM_Button.isChecked())) {
             int step = 2;
@@ -132,4 +192,7 @@ public class Lab2 extends Activity implements ToggleButton.OnCheckedChangeListen
     public void onStopTrackingTouch(SeekBar seekBar) {
 
     }
+
+
 }
+
